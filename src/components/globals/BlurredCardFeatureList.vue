@@ -1,7 +1,7 @@
 <template>
   <Splide :options="splideOptions">
     <SplideSlide class="mr-10" v-for="feature in PROPS.features" :key="feature">
-      <section class="h-full w-80 overflow-hidden rounded-lg p-2 backdrop-blur-2xl">
+      <section class="h-full w-60 lg:w-80 overflow-hidden rounded-lg p-2 backdrop-blur-2xl">
         <span class="flex overflow-hidden rounded-lg">
           <img :src="feature.imgSrc" alt="Feature card picture" />
         </span>

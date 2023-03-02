@@ -1,7 +1,7 @@
 <template>
   <header
     ref="header"
-    class="relative h-screen bg-cover bg-center bg-no-repeat p-1 flex flex-col"
+    class="relative min-h-screen bg-cover bg-center bg-no-repeat p-1 flex flex-col"
     :style="{ 'background-image': `url('${PROPS.headerBg}')` }"
     features=""
   >
@@ -19,7 +19,7 @@
       </h2>
       <p class="text-base font-semibold">{{ PROPS.printHeadline }}</p>
       <button
-        class="mt-8 mb-4 rounded-md px-6 py-2 font-semibold backdrop-blur-2xl transition duration-100 hover:backdrop-blur-lg"
+        class="mt-2 mb-14 rounded-md px-4 py-3 font-semibold backdrop-blur-2xl transition duration-100 hover:backdrop-blur-lg"
         type="button"
       >
         Read More

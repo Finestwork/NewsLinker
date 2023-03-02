@@ -1,5 +1,5 @@
 <template>
-  <nav class="t-0 l-0 fixed w-full py-4 backdrop-blur-2xl">
+  <nav class="fixed top-0 left-0 w-full py-4 font-sans backdrop-blur-2xl">
     <div class="mx-auto flex flex-col justify-between xl:flex-row">
       <Splide class="order-2 font-semibold text-white xl:order-1" :options="splideOptions">
         <SplideSlide v-for="nav in PROPS.navLinks" :key="nav">

@@ -1,13 +1,14 @@
 <template>
   <Splide :options="splideOptions">
-    <SplideSlide class="mr-10" v-for="feature in features" :key="feature">
-      <section class="w-80 overflow-hidden rounded-lg p-2 backdrop-blur-2xl">
+    <SplideSlide class="mr-10" v-for="feature in PROPS.features" :key="feature">
+      <section class="h-full w-80 overflow-hidden rounded-lg p-2 backdrop-blur-2xl">
         <span class="flex overflow-hidden rounded-lg">
           <img :src="feature.imgSrc" alt="Feature card picture" />
         </span>
-        <h3 class="text-sm font-bold text-white">{{ feature.subSectionName }}</h3>
-        <span class="base line-clamp-2 font-serif font-medium text-white">
-          {{ feature.title }}</span
+        <h3 class="mt-2 text-sm font-bold text-white">{{ feature.subSectionName }}</h3>
+        <span class="underline base line-clamp-2 font-serif font-medium text-white">
+          <a :href='feature.url' target='_blank'>{{ feature.title }}</a>
+        </span
         >
       </section>
     </SplideSlide>
@@ -16,7 +17,7 @@
 
 <script setup>
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
-defineProps({
+const PROPS = defineProps({
   features: {
     type: Array,
     required: true

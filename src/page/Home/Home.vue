@@ -3,69 +3,48 @@
     :header-bg="HEADER_BG"
     :headline="HEADLINE"
     :print-headline="PRINT_HEADLINE"
-    :features="FEATURED_CARD_OBJ"
+    :features="FEATURES"
   />
 </template>
 
 <script setup>
+import {ref} from 'vue';
+import TimesAPI from '@/helpers/APIs/TimesAPI';
 import Header from '@/page/Home/Partials/Header.vue';
-import NewsObj from '../../../news.json';
 
-const HEADER_BG = `https://www.nytimes.com/${NewsObj.multimedia[43].url}`;
-const HEADLINE = NewsObj.headline.main;
-const PRINT_HEADLINE = NewsObj.headline.print_headline;
+const HEADER_BG = ref('');
+const HEADLINE = ref('');
+const PRINT_HEADLINE = ref('');
 
 // Features
-const FEATURED_CARD_OBJ = [
-  {
-    imgSrc: HEADER_BG,
-    title: 'For a President Who Spends His Days Confronting Russia and China, a Domestic Focus',
-    subSectionName: 'Politics'
-  },
-  {
-    imgSrc: HEADER_BG,
-    title: 'For a President Who Spends His Days Confronting Russia and China, a Domestic Focus',
-    subSectionName: 'Politics'
-  },
-  {
-    imgSrc: HEADER_BG,
-    title: 'For a President Who Spends His Days Confronting Russia and China, a Domestic Focus',
-    subSectionName: 'Politics'
-  },
-  {
-    imgSrc: HEADER_BG,
-    title: 'For a President Who Spends His Days Confronting Russia and China, a Domestic Focus',
-    subSectionName: 'Politics'
-  },
-  {
-    imgSrc: HEADER_BG,
-    title: 'For a President Who Spends His Days Confronting Russia and China, a Domestic Focus',
-    subSectionName: 'Politics'
-  },
-  {
-    imgSrc: HEADER_BG,
-    title: 'For a President Who Spends His Days Confronting Russia and China, a Domestic Focus',
-    subSectionName: 'Politics'
-  },
-  {
-    imgSrc: HEADER_BG,
-    title: 'For a President Who Spends His Days Confronting Russia and China, a Domestic Focus',
-    subSectionName: 'Politics'
-  },
-  {
-    imgSrc: HEADER_BG,
-    title: 'For a President Who Spends His Days Confronting Russia and China, a Domestic Focus',
-    subSectionName: 'Politics'
-  },
-  {
-    imgSrc: HEADER_BG,
-    title: 'For a President Who Spends His Days Confronting Russia and China, a Domestic Focus',
-    subSectionName: 'Politics'
-  },
-  {
-    imgSrc: HEADER_BG,
-    title: 'For a President Who Spends His Days Confronting Russia and China, a Domestic Focus',
-    subSectionName: 'Politics'
-  }
-];
+const FEATURES = ref([]);
+
+TimesAPI.getArticles({
+  q: 'news',
+  fq: 'section_name:(world)'
+}).then(res => {
+  const NEWS = res.data.response.docs;
+
+  // Main News
+  const MAIN_NEWS = NEWS[0];
+  HEADER_BG.value = `https://www.nytimes.com/${MAIN_NEWS.multimedia[43].url}`;
+  HEADLINE.value = MAIN_NEWS.headline.main;
+  PRINT_HEADLINE.value = MAIN_NEWS.abstract;
+
+  // Features
+  FEATURES.value = NEWS.filter((news, ind) => ind !== 0).map(news => {{
+    console.log(news);
+    return {
+      imgSrc: `https://www.nytimes.com/${news.multimedia[43].url}`,
+      title: news.headline.main,
+      subSectionName: news.section_name,
+      url: news.web_url
+    }
+  }})
+
+  console.log(NEWS);
+}).catch(err => {
+  // Redirect to another page
+  console.log(err)
+})
 </script>

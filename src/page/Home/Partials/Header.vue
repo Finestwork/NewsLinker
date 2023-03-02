@@ -1,8 +1,9 @@
 <template>
   <header
     ref="header"
-    class="h-screen bg-cover bg-center bg-no-repeat p-1"
+    class="relative h-screen bg-cover bg-center bg-no-repeat p-1"
     :style="{ 'background-image': `url('${PROPS.headerBg}')` }"
+    features=""
   >
     <BlurredNavbar ref="navbar" :nav-links="NAVS" />
 
@@ -24,6 +25,8 @@
         Read More
       </button>
     </div>
+
+    <BlurredCardFeatureList :features="features" class="absolute bottom-0 left-0 w-full" />
   </header>
 </template>
 
@@ -31,6 +34,7 @@
 import { ref, nextTick } from 'vue';
 import QuoteLeft from '@/components/icons/QuoteLeft.vue';
 import BlurredNavbar from '@/components/globals/BlurredNavbar.vue';
+import BlurredCardFeatureList from '@/components/globals/BlurredCardFeatureList.vue';
 
 const PROPS = defineProps({
   headerBg: {
@@ -43,6 +47,10 @@ const PROPS = defineProps({
   },
   printHeadline: {
     type: String,
+    required: true
+  },
+  features: {
+    type: Array,
     required: true
   }
 });

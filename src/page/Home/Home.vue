@@ -5,18 +5,21 @@
     :print-headline="PRINT_HEADLINE"
     :features="FEATURES"
   />
+  <div class='px-4 py-10'>
+    <AboutHealth class='w-6/12'/>
+  </div>
+
 </template>
 
 <script setup>
 import {ref} from 'vue';
 import TimesAPI from '@/helpers/APIs/TimesAPI';
-import Header from '@/page/Home/Partials/Header.vue';
+import Header from './Partials/Header.vue';
+import AboutHealth from './Partials/AboutHealth.vue';
 
 const HEADER_BG = ref('');
 const HEADLINE = ref('');
 const PRINT_HEADLINE = ref('');
-
-// Features
 const FEATURES = ref([]);
 
 TimesAPI.getArticles({
@@ -33,16 +36,13 @@ TimesAPI.getArticles({
 
   // Features
   FEATURES.value = NEWS.filter((news, ind) => ind !== 0).map(news => {{
-    console.log(news);
     return {
       imgSrc: `https://www.nytimes.com/${news.multimedia[43].url}`,
       title: news.headline.main,
       subSectionName: news.section_name,
       url: news.web_url
     }
-  }})
-
-  console.log(NEWS);
+  }});
 }).catch(err => {
   // Redirect to another page
   console.log(err)

@@ -5,8 +5,9 @@
     :print-headline="PRINT_HEADLINE"
     :features="FEATURES"
   />
-  <div class='px-4 py-10'>
+  <div class='flex px-4 py-10'>
     <AboutHealth class='w-6/12'/>
+    <Opinion class='w-6/12'/>
   </div>
 
 </template>
@@ -16,6 +17,7 @@ import {ref} from 'vue';
 import TimesAPI from '@/helpers/APIs/TimesAPI';
 import Header from './Partials/Header.vue';
 import AboutHealth from './Partials/AboutHealth.vue';
+import Opinion from '@/page/Home/Partials/Opinion.vue';
 
 const HEADER_BG = ref('');
 const HEADLINE = ref('');

@@ -1,7 +1,6 @@
 <template>
   <section v-if='Object.keys(MAIN_NEWS).length !== 0'>
-    <h2 class='text-4xl text-slate-800 font-black text-center mb-4'>About <span class='text-indigo-500'>Health</span>
-    </h2>
+    <SectionTitle :colored="'About'" :plain="'Health'"/>
     <BlurredTitleNews :header-bg='MAIN_NEWS.headerBg' :author='MAIN_NEWS.author' :headline='MAIN_NEWS.headline'
                       :published-date='MAIN_NEWS.publishedDate' :src='MAIN_NEWS.src' />
     <div class='flex justify-between mt-6'>
@@ -15,6 +14,7 @@
 import { reactive } from 'vue';
 import BlurredTitleNews from '@/components/globals/BlurredTitleNews.vue';
 import NewsCard from '@/components/globals/NewsCard.vue';
+import SectionTitle from '@/components/globals/SectionTitle.vue';
 import TimesAPI from '@/helpers/APIs/TimesAPI';
 import NameFormatter from '@/helpers/Formatters/NameFormatter';
 
@@ -54,6 +54,4 @@ TimesAPI.getArticles({
 }).catch(err => {
   console.log(err);
 });
-
-
 </script>

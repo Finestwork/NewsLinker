@@ -8,12 +8,12 @@
         <h2 class="text-xl font-black text-indigo-500">NewsLinker</h2>
       </div>
       <p class="text-sm font-medium text-slate-600">
-        The app is a news aggregator that redirects users to the original articles, providing a
+        This is a news aggregator that redirects users to the original articles, providing a
         convenient and centralized way to discover and read the latest news.
       </p>
     </section>
     <section
-      class="mb-10 flex w-5/12 w-full flex-col font-bold sm:mb-0 sm:w-4/12 lg:w-2/6 lg:w-2/6 lg:items-center"
+      class="mb-10 flex w-full flex-col font-bold sm:mb-0 sm:w-4/12 lg:w-2/6 lg:w-2/6 lg:items-center"
     >
       <div>
         <h2 class="mb-4 text-xl text-indigo-900">Follow Me On</h2>
@@ -36,7 +36,7 @@
         </a>
       </div>
     </section>
-    <section class="flex w-5/12 flex-col font-bold sm:w-4/12 lg:w-2/6 lg:w-2/6 lg:items-center">
+    <section class="flex flex-col font-bold sm:w-4/12 lg:w-2/6 lg:w-2/6 lg:items-center">
       <div>
         <h2 class="mb-4 text-xl text-indigo-900">Special Thanks</h2>
         <a

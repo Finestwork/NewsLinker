@@ -5,7 +5,7 @@
     :style="{ 'background-image': `url('${PROPS.headerBg}')` }"
     features=""
   >
-    <BlurredNavbar ref="navbar" :nav-links="NAVS" />
+    <BlurredNavbar class="z-50" ref="navbar" :nav-links="NAVS" />
 
     <div
       ref="titleWrapper"

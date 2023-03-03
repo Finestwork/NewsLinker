@@ -1,6 +1,7 @@
 <template>
-  <h2 class='text-4xl text-slate-800 font-black text-center mb-4'>{{ PROPS.plain}}
-    <span class='text-indigo-500'>{{PROPS.colored}}</span>
+  <h2 class="text-slate-800">
+    {{ PROPS.plain }}
+    <span class="text-indigo-600">{{ PROPS.colored }}</span>
   </h2>
 </template>
 
@@ -14,5 +15,5 @@ const PROPS = defineProps({
     type: String,
     required: true
   }
-})
+});
 </script>

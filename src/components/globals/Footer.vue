@@ -1,6 +1,6 @@
 <template>
   <footer class="flex flex-wrap pb-10">
-    <section class="mb-10 w-full xl:mb-0 xl:w-2/6">
+    <section class="mb-10 w-full lg:mb-0 lg:w-2/6">
       <div class="flex items-center">
         <span class="mr-2 flex w-7">
           <img class="w-full" src="/assets/images/logo.svg" alt="News Linker Logo" />
@@ -12,7 +12,9 @@
         convenient and centralized way to discover and read the latest news.
       </p>
     </section>
-    <section class="flex w-5/12 w-full flex-col font-bold lg:w-2/6 xl:w-2/6 xl:items-center">
+    <section
+      class="mb-10 flex w-5/12 w-full flex-col font-bold sm:mb-0 sm:w-4/12 lg:w-2/6 lg:w-2/6 lg:items-center"
+    >
       <div>
         <h2 class="mb-4 text-xl text-indigo-900">Follow Me On</h2>
         <a
@@ -34,7 +36,7 @@
         </a>
       </div>
     </section>
-    <section class="flex w-5/12 flex-col font-bold lg:w-2/6 xl:w-2/6 xl:items-center">
+    <section class="flex w-5/12 flex-col font-bold sm:w-4/12 lg:w-2/6 lg:w-2/6 lg:items-center">
       <div>
         <h2 class="mb-4 text-xl text-indigo-900">Special Thanks</h2>
         <a

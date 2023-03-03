@@ -8,7 +8,7 @@
 
   <div class="px-4">
     <div class="divide-y divide-dashed divide-slate-400 py-10">
-      <div class="mb-20 flex">
+      <div class="mb-20 flex flex-col xl:flex-row">
         <AboutHealth />
         <Opinion />
       </div>
@@ -16,7 +16,7 @@
       <TheWorld />
     </div>
 
-    <Footer class="mt-10" />
+    <Footer class="" />
   </div>
 </template>
 

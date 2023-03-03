@@ -1,5 +1,5 @@
 <template>
-  <section class="w-6/12" v-if="Object.keys(MAIN_NEWS).length !== 0">
+  <section class="xl:w-6/12" v-if="Object.keys(MAIN_NEWS).length !== 0">
     <SectionTitle
       class="mb-6 text-center text-4xl font-black"
       :colored="'Health'"
@@ -12,9 +12,9 @@
       :published-date="MAIN_NEWS.publishedDate"
       :src="MAIN_NEWS.src"
     />
-    <div class="mt-6 flex justify-between">
+    <div class="mt-6 flex flex-col sm:flex-row">
       <NewsCard
-        class="mr-2 w-6/12"
+        class="mr-2 mb-4 last:mb-0 sm:mb-0 sm:w-6/12"
         v-for="news in SUB_NEWS.value"
         :key="news"
         :header-bg="news.headerBg"

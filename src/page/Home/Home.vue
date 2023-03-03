@@ -6,13 +6,17 @@
     :features="FEATURES"
   />
 
-  <div class="divide-y divide-dashed divide-slate-400 px-4 py-10">
-    <div class="mb-20 flex">
-      <AboutHealth />
-      <Opinion />
+  <div class="px-4">
+    <div class="divide-y divide-dashed divide-slate-400 py-10">
+      <div class="mb-20 flex">
+        <AboutHealth />
+        <Opinion />
+      </div>
+
+      <TheWorld />
     </div>
 
-    <TheWorld />
+    <Footer class="mt-10" />
   </div>
 </template>
 
@@ -23,6 +27,7 @@ import Header from './Partials/Header.vue';
 import AboutHealth from './Partials/AboutHealth.vue';
 import Opinion from '@/page/Home/Partials/Opinion.vue';
 import TheWorld from '@/page/Home/Partials/TheWorld.vue';
+import Footer from '@/components/globals/Footer.vue';
 
 const HEADER_BG = ref('');
 const HEADLINE = ref('');

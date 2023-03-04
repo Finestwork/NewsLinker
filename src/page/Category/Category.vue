@@ -100,6 +100,8 @@ import AuthorWithDate from '@/components/globals/AuthorWithDate.vue';
 
 Nprogress.configure({ showSpinner: false });
 Nprogress.start();
+
+const ROUTER = useRouter();
 const ROUTE = useRoute();
 const CATEGORY = ref(ROUTE.params.id);
 const MAIN_NEWS = ref(null);
@@ -122,7 +124,7 @@ TimesAPI.getArticles({
 })
   .then(handleRequest)
   .catch((err) => {
-    if (!!err.response && err.response.status === 429) useRouter().push({ name: 'RateLimitError' });
+    if (!!err.response && err.response.status === 429) ROUTER.push({ name: 'RateLimitError' });
   });
 </script>
 

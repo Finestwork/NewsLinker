@@ -40,7 +40,7 @@
 </template>
 
 <script setup>
-import { ref, nextTick } from 'vue';
+import { ref, nextTick, defineEmits } from 'vue';
 import PageLoader from '@/components/globals/PageLoader.vue';
 import QuoteLeft from '@/components/icons/QuoteLeft.vue';
 import BlurredNavbar from '@/components/globals/BlurredNavbar.vue';
@@ -67,6 +67,7 @@ const featureCards = ref(null);
 const navbar = ref(null);
 const MAIN_NEWS = ref(null);
 const FEATURES = ref(null);
+const EMITS = defineEmits(['headerLoaded']);
 const adjustTitleWrapper = () => {
   if (!navbar.value) return;
   const NAVBAR_HEIGHT = navbar.value.$el.offsetHeight;
@@ -95,6 +96,7 @@ const handleRequest = (res) => {
         if (ctr === TOTAL_LENGTH) {
           showLoader.value = false;
           document.body.style.overflow = null;
+          EMITS('headerLoaded');
         }
       });
     });
@@ -108,10 +110,5 @@ document.body.style.overflow = 'hidden';
 TimesAPI.getArticles({
   q: 'news',
   fq: 'section_name:("World")'
-})
-  .then(handleRequest)
-  .catch((err) => {
-    // Redirect to another page
-    console.log(err);
-  });
+}).then(handleRequest);
 </script>

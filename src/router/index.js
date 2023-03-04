@@ -1,5 +1,6 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../page/Home/Home.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import Home from '../page/Home/Home.vue';
+import Category from '../page/Category/Category.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -9,7 +10,12 @@ const router = createRouter({
       name: 'Home',
       component: Home
     },
+    {
+      path: '/category/:id',
+      name: 'Category',
+      component: Category
+    }
   ]
-})
+});
 
-export default router
+export default router;

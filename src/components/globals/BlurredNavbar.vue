@@ -3,7 +3,9 @@
     <div class="mx-auto flex flex-col justify-between xl:flex-row">
       <Splide class="order-2 font-semibold text-white xl:order-1" :options="splideOptions">
         <SplideSlide v-for="nav in PROPS.navLinks" :key="nav">
-          <a class="px-4" href="#">{{ nav }}</a>
+          <router-link class="px-4" :to="{ name: 'Category', params: { id: nav.toLowerCase() } }">{{
+            nav
+          }}</router-link>
         </SplideSlide>
       </Splide>
 
@@ -22,9 +24,11 @@
 </template>
 
 <script setup>
-import MagnifyingGlass from '@/components/icons/MagnifyingGlass.vue';
-import { Splide, SplideSlide } from '@splidejs/vue-splide';
 import { ref } from 'vue';
+import { RouterLink } from 'vue-router';
+import { Splide, SplideSlide } from '@splidejs/vue-splide';
+import MagnifyingGlass from '@/components/icons/MagnifyingGlass.vue';
+
 const PROPS = defineProps({
   navLinks: {
     type: Array,

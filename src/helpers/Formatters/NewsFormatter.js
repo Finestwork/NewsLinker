@@ -2,11 +2,14 @@ import NameFormatter from '@/helpers/Formatters/NameFormatter';
 
 export default class NewsFormatter {
   static format(news) {
-    const AUTHOR_NAME = NameFormatter.formatName(
-      news.byline.person[0].firstname,
-      news.byline.person[0].middlename,
-      news.byline.person[0].lastname
-    );
+    const AUTHOR_NAME =
+      news.byline.person.length !== 0
+        ? NameFormatter.formatName(
+            news.byline.person[0].firstname,
+            news.byline.person[0].middlename,
+            news.byline.person[0].lastname
+          )
+        : 'Anonymous';
 
     const IMG_SRC =
       news.multimedia.length !== 0

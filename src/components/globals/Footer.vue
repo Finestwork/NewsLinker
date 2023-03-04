@@ -1,5 +1,5 @@
 <template>
-  <footer class="flex flex-wrap pb-10">
+  <footer class="flex flex-wrap bg-white pb-10">
     <section class="mb-10 w-full lg:mb-0 lg:w-2/6">
       <div class="flex items-center">
         <span class="mr-2 flex w-7">

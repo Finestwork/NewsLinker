@@ -66,6 +66,7 @@ import AuthorWithDate from '@/components/globals/AuthorWithDate.vue';
 import TimesAPI from '@/helpers/APIs/TimesAPI';
 import NewsFormatter from '@/helpers/Formatters/NewsFormatter';
 
+const router = useRouter();
 const EMITS = defineEmits(['worldLoaded']);
 const BIG_NEWS = ref(null);
 const SUB_NEWS = ref(null);
@@ -83,6 +84,6 @@ TimesAPI.getArticles({
     EMITS('worldLoaded');
   })
   .catch((err) => {
-    if (!!err.response && err.response.status === 429) useRouter().push({ name: 'RateLimitError' });
+    if (!!err.response && err.response.status === 429) router.push({ name: 'RateLimitError' });
   });
 </script>

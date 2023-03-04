@@ -45,6 +45,7 @@ import BlurredCardFeatureList from '@/components/globals/BlurredCardFeatureList.
 import TimesAPI from '@/helpers/APIs/TimesAPI';
 import NewsFormatter from '@/helpers/Formatters/NewsFormatter';
 
+const router = useRouter();
 const NAVS = ref([
   'Latest',
   'World',
@@ -110,6 +111,6 @@ TimesAPI.getArticles({
 })
   .then(handleRequest)
   .catch((err) => {
-    if (!!err.response && err.response.status === 429) useRouter().push({ name: 'RateLimitError' });
+    if (!!err.response && err.response.status === 429) router.push({ name: 'RateLimitError' });
   });
 </script>

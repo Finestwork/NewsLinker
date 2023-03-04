@@ -39,6 +39,7 @@ import SectionTitle from '@/components/globals/SectionTitle.vue';
 import TimesAPI from '@/helpers/APIs/TimesAPI';
 import NameFormatter from '@/helpers/Formatters/NameFormatter';
 
+const router = useRouter();
 const EMITS = defineEmits(['opinionLoaded']);
 const OPINIONS = ref([]);
 
@@ -68,6 +69,6 @@ TimesAPI.getArticles({
     EMITS('opinionLoaded');
   })
   .catch((err) => {
-    if (!!err.response && err.response.status === 429) useRouter().push({ name: 'RateLimitError' });
+    if (!!err.response && err.response.status === 429) router.push({ name: 'RateLimitError' });
   });
 </script>

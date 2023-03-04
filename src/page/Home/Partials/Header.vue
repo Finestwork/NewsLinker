@@ -1,7 +1,4 @@
 <template>
-  <Teleport to="body">
-    <PageLoader v-if="showLoader" />
-  </Teleport>
   <header
     v-if="!!MAIN_NEWS"
     ref="header"
@@ -41,7 +38,7 @@
 
 <script setup>
 import { ref, nextTick, defineEmits } from 'vue';
-import PageLoader from '@/components/globals/PageLoader.vue';
+import { useRouter } from 'vue-router';
 import QuoteLeft from '@/components/icons/QuoteLeft.vue';
 import BlurredNavbar from '@/components/globals/BlurredNavbar.vue';
 import BlurredCardFeatureList from '@/components/globals/BlurredCardFeatureList.vue';
@@ -110,5 +107,9 @@ document.body.style.overflow = 'hidden';
 TimesAPI.getArticles({
   q: 'news',
   fq: 'section_name:("World")'
-}).then(handleRequest);
+})
+  .then(handleRequest)
+  .catch((err) => {
+    if (!!err.response && err.response.status === 429) useRouter().push({ name: 'RateLimitError' });
+  });
 </script>

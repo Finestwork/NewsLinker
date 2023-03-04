@@ -60,11 +60,13 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 import SectionTitle from '@/components/globals/SectionTitle.vue';
 import AuthorWithDate from '@/components/globals/AuthorWithDate.vue';
 import TimesAPI from '@/helpers/APIs/TimesAPI';
 import NewsFormatter from '@/helpers/Formatters/NewsFormatter';
 
+const EMITS = defineEmits(['worldLoaded']);
 const BIG_NEWS = ref(null);
 const SUB_NEWS = ref(null);
 const LIST_NEWS = ref(null);
@@ -72,10 +74,15 @@ const LIST_NEWS = ref(null);
 TimesAPI.getArticles({
   q: 'War',
   fq: 'section_name:("World")'
-}).then((res) => {
-  const DATA = res.data.response.docs;
-  BIG_NEWS.value = DATA.slice(0, 1).map((news) => NewsFormatter.format(news))[0];
-  SUB_NEWS.value = DATA.slice(1, 2).map((news) => NewsFormatter.format(news))[0];
-  LIST_NEWS.value = DATA.slice(2, 5).map((news) => NewsFormatter.format(news));
-});
+})
+  .then((res) => {
+    const DATA = res.data.response.docs;
+    BIG_NEWS.value = DATA.slice(0, 1).map((news) => NewsFormatter.format(news))[0];
+    SUB_NEWS.value = DATA.slice(1, 2).map((news) => NewsFormatter.format(news))[0];
+    LIST_NEWS.value = DATA.slice(2, 5).map((news) => NewsFormatter.format(news));
+    EMITS('worldLoaded');
+  })
+  .catch((err) => {
+    if (!!err.response && err.response.status === 429) useRouter().push({ name: 'RateLimitError' });
+  });
 </script>

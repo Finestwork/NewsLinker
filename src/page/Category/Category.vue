@@ -88,10 +88,10 @@
 </template>
 
 <script setup>
+import { useRoute, RouterLink, useRouter } from 'vue-router';
+import { ref } from 'vue';
 import Nprogress from 'nprogress';
 import 'nprogress/nprogress.css';
-import { useRoute, RouterLink } from 'vue-router';
-import { ref } from 'vue';
 import TimesAPI from '@/helpers/APIs/TimesAPI';
 import ArrowLeft from '@/components/icons/ArrowLeft.vue';
 import Footer from '@/components/globals/Footer.vue';
@@ -119,7 +119,11 @@ const handleRequest = (res) => {
 };
 TimesAPI.getArticles({
   q: CATEGORY.value
-}).then(handleRequest);
+})
+  .then(handleRequest)
+  .catch((err) => {
+    if (!!err.response && err.response.status === 429) useRouter().push({ name: 'RateLimitError' });
+  });
 </script>
 
 <style>

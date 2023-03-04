@@ -1,8 +1,11 @@
 <template>
   <nav class="fixed top-0 left-0 w-full bg-black/50 py-4 font-sans backdrop-blur-2xl">
     <div class="mx-auto flex flex-col justify-between xl:flex-row">
-      <Splide class="order-2 font-semibold text-white xl:order-1" :options="splideOptions">
-        <SplideSlide v-for="nav in PROPS.navLinks" :key="nav">
+      <Splide
+        class="order-2 font-semibold text-white xl:order-1 xl:w-full"
+        :options="splideOptions"
+      >
+        <SplideSlide class="mr-6" v-for="nav in PROPS.navLinks" :key="nav">
           <router-link class="px-4" :to="{ name: 'Category', params: { id: nav.toLowerCase() } }">{{
             nav
           }}</router-link>
@@ -10,7 +13,7 @@
       </Splide>
 
       <div
-        class="order-1 ml-6 mr-6 mb-6 flex items-center xl:order-2 xl:ml-4 xl:mb-0"
+        class="order-1 ml-6 mr-6 mb-6 flex items-center xl:order-2 xl:ml-4 xl:mb-0 xl:w-11/12"
         ref="searchBox"
       >
         <span class="mr-3 flex h-4 w-4">

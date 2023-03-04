@@ -7,7 +7,7 @@
 
     <p class="mt-2 w-10/12 text-justify text-sm font-medium text-slate-700 md:w-7/12">
       We're sorry, but it appears that you have exceeded your rate limit quota. We are using
-      <span class="text-red-500">New York Times News API</span> and per second you have 10 requests
+      <span class="text-red-500">New York Times News API</span> and per minute you have 10 requests
       that's why our system have detected that you have made too many requests within a given
       timeframe. As a result, we are unable to process your request at this time. Please try again
       later. Thank you for your understanding.

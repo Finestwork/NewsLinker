@@ -12,7 +12,7 @@ export default class NewsFormatter {
         : 'Anonymous';
 
     const IMG_SRC =
-      news.multimedia.length !== 0
+      news.multimedia.length >= 43
         ? `https://www.nytimes.com/${news.multimedia[43].url}`
         : '/assets/images/no-image.png';
 

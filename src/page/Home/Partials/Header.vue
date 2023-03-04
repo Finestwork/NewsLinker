@@ -37,7 +37,7 @@
 </template>
 
 <script setup>
-import { ref, nextTick, defineEmits } from 'vue';
+import { ref, nextTick } from 'vue';
 import { useRouter } from 'vue-router';
 import QuoteLeft from '@/components/icons/QuoteLeft.vue';
 import BlurredNavbar from '@/components/globals/BlurredNavbar.vue';

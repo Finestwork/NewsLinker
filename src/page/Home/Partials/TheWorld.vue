@@ -72,14 +72,10 @@ const LIST_NEWS = ref(null);
 TimesAPI.getArticles({
   q: 'War',
   fq: 'section_name:("World")'
-})
-  .then((res) => {
-    const DATA = res.data.response.docs;
-    BIG_NEWS.value = DATA.slice(0, 1).map((news) => NewsFormatter.format(news))[0];
-    SUB_NEWS.value = DATA.slice(1, 2).map((news) => NewsFormatter.format(news))[0];
-    LIST_NEWS.value = DATA.slice(2, 5).map((news) => NewsFormatter.format(news));
-
-    console.log(BIG_NEWS.value);
-  })
-  .catch((err) => console.log(err));
+}).then((res) => {
+  const DATA = res.data.response.docs;
+  BIG_NEWS.value = DATA.slice(0, 1).map((news) => NewsFormatter.format(news))[0];
+  SUB_NEWS.value = DATA.slice(1, 2).map((news) => NewsFormatter.format(news))[0];
+  LIST_NEWS.value = DATA.slice(2, 5).map((news) => NewsFormatter.format(news));
+});
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex min-h-screen flex-col items-start py-10 px-3 sm:px-8" v-if="!!MAIN_NEWS">
+  <div class="flex min-h-screen flex-col items-start py-10 px-3 sm:px-8" v-if="!isPageLoading">
     <p
       class="mx-auto max-w-xl rounded-lg bg-red-100 py-3 px-4 text-center text-sm font-semibold text-red-600"
     >
@@ -20,7 +20,7 @@
         <!-- MAIN NEWs -->
         <article class="shrink-0 xl:w-8/12">
           <span class="flex h-96 overflow-hidden rounded-lg">
-            <img class="w-full object-cover" :src="MAIN_NEWS.img" alt="News Image" />
+            <img class="article-img w-full object-cover" :src="MAIN_NEWS.img" alt="News Image" />
           </span>
           <h3 class="font-serif text-2xl font-bold">
             <a
@@ -36,7 +36,7 @@
         <!-- SUB NEWS -->
         <div class="mt-10 flex flex-col md:flex-row xl:mt-0 xl:w-4/12 xl:flex-col xl:pl-6">
           <article
-            class="mb-4 flex flex-col last:mb-0 sm:flex-row md:flex-col md:pr-4 md:last:pr-0 xl:flex-row xl:pr-0"
+            class="article-img mb-4 flex flex-col last:mb-0 sm:flex-row md:flex-col md:pr-4 md:last:pr-0 xl:flex-row xl:pr-0"
             v-for="article in SUB_NEWS"
             :key="article"
           >
@@ -72,7 +72,7 @@
           :key="article"
         >
           <span class="flex h-44 overflow-hidden rounded-lg">
-            <img class="w-full object-cover" :src="article.img" alt="Image News" />
+            <img class="article-img w-full object-cover" :src="article.img" alt="Image News" />
           </span>
           <h3 class="mt-2 font-serif text-base font-semibold">
             <a class="hover:text-indigo-600 hover:underline" :href="article.src" target="_blank">{{
@@ -88,6 +88,8 @@
 </template>
 
 <script setup>
+import Nprogress from 'nprogress';
+import 'nprogress/nprogress.css';
 import { useRoute, RouterLink } from 'vue-router';
 import { ref } from 'vue';
 import TimesAPI from '@/helpers/APIs/TimesAPI';
@@ -96,11 +98,14 @@ import Footer from '@/components/globals/Footer.vue';
 import NewsFormatter from '@/helpers/Formatters/NewsFormatter';
 import AuthorWithDate from '@/components/globals/AuthorWithDate.vue';
 
+Nprogress.configure({ showSpinner: false });
+Nprogress.start();
 const ROUTE = useRoute();
 const CATEGORY = ref(ROUTE.params.id);
 const MAIN_NEWS = ref(null);
 const SUB_NEWS = ref(null);
 const LIST_NEWS = ref(null);
+const isPageLoading = ref(true);
 
 const handleRequest = (res) => {
   const DOCS = res.data.response.docs;
@@ -108,8 +113,18 @@ const handleRequest = (res) => {
   MAIN_NEWS.value = NewsFormatter.format(DOCS[0]);
   SUB_NEWS.value = DOCS.slice(1, 4).map((news) => NewsFormatter.format(news));
   LIST_NEWS.value = DOCS.slice(4, DOCS.length).map((news) => NewsFormatter.format(news));
+
+  isPageLoading.value = false;
+  Nprogress.done();
 };
 TimesAPI.getArticles({
   q: CATEGORY.value
 }).then(handleRequest);
 </script>
+
+<style>
+#nprogress .bar {
+  background-color: #4f46e5;
+  box-shadow: 0 0 30px 3px #4f46e596;
+}
+</style>

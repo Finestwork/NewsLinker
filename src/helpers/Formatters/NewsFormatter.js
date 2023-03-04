@@ -16,7 +16,10 @@ export default class NewsFormatter {
     return {
       img: IMG_SRC,
       abstract: news.abstract,
+      subSectionName: news.section_name,
+      main: news.main,
       headline: news.headline.main,
+      printHeadline: news.headline.print_headline,
       author: AUTHOR_NAME,
       publishedDate: new Date(news.pub_date).toLocaleDateString('en', { dateStyle: 'long' }),
       src: news.web_url

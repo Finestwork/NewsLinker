@@ -1,5 +1,5 @@
 <template>
-  <section class="pt-14">
+  <section class="pt-14" v-if="!!SUB_NEWS">
     <SectionTitle class="text-left text-8xl font-black" :plain="'The'" :colored="'World'" />
 
     <div class="mt-8 flex flex-col xl:flex-row">
@@ -65,9 +65,9 @@ import AuthorWithDate from '@/components/globals/AuthorWithDate.vue';
 import TimesAPI from '@/helpers/APIs/TimesAPI';
 import NewsFormatter from '@/helpers/Formatters/NewsFormatter';
 
-const BIG_NEWS = ref({});
-const SUB_NEWS = ref({});
-const LIST_NEWS = ref([]);
+const BIG_NEWS = ref(null);
+const SUB_NEWS = ref(null);
+const LIST_NEWS = ref(null);
 
 TimesAPI.getArticles({
   q: 'War',
@@ -79,7 +79,7 @@ TimesAPI.getArticles({
     SUB_NEWS.value = DATA.slice(1, 2).map((news) => NewsFormatter.format(news))[0];
     LIST_NEWS.value = DATA.slice(2, 5).map((news) => NewsFormatter.format(news));
 
-    console.log(LIST_NEWS.value);
+    console.log(BIG_NEWS.value);
   })
   .catch((err) => console.log(err));
 </script>

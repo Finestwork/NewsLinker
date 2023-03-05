@@ -8,7 +8,7 @@
         <h2 class="text-xl font-black text-indigo-500">NewsLinker</h2>
       </div>
       <p class="text-sm font-medium text-slate-600">
-        This is a news aggregator that redirects users to the original articles, providing a
+        NewsLinker is a news aggregator that redirects users to the original articles, providing a
         convenient and centralized way to discover and read the latest news.
       </p>
     </section>

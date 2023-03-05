@@ -1,35 +1,19 @@
-# app
+![Banner](readme.png)
 
-This template should help get you started developing with Vue 3 in Vite.
+# Introduction
+NewsLinker is a news aggregator that redirects users to the original articles, providing a
+convenient and centralized way to discover and read the latest news.
 
-## Recommended IDE Setup
+## Important Notice
+Just want to let you know that the app is hosted on a static site hosting service, so you may experience some limitations while using it. For instance, you can navigate to different categories, and you will be redirected to the corresponding path like this: `/category/:categoryId`, but once you hit the address bar again, it will give you a 404 error page.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Please keep in mind that this app is primarily meant for demonstration purposes, and we appreciate your understanding.
 
-## Customize configuration
+Also, New York Times API has a **rate limit** of 10 requests per minute.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+# Browser Support
+- Chrome 76+
+- Edge 17+
+- Safari 9+
+- Firefox 103+
+- Opera 64+

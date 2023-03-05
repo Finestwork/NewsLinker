@@ -17,3 +17,7 @@ Also, New York Times API has a **rate limit** of 10 requests per minute.
 - Safari 9+
 - Firefox 103+
 - Opera 64+
+
+# Special Thanks To
+- [LogoIpsum](https://logoipsum.com/)
+- [New York Times API](https://developer.nytimes.com/)

@@ -4,6 +4,8 @@
 NewsLinker is a news aggregator that redirects users to the original articles, providing a
 convenient and centralized way to discover and read the latest news.
 
+Built with: Vue.js & TailwindCSS
+
 ## Important Notice
 Just want to let you know that the app is hosted on a static site hosting service, so you may experience some limitations while using it. For instance, you can navigate to different categories, and you will be redirected to the corresponding path like this: `/category/:categoryId`, but once you hit the address bar again, it will give you a 404 error page.
 

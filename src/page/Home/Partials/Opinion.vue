@@ -37,11 +37,12 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import SectionTitle from '@/components/globals/SectionTitle.vue';
 import TimesAPI from '@/helpers/APIs/TimesAPI';
-import NameFormatter from '@/helpers/Formatters/NameFormatter';
+import NewsFormatter from '@/helpers/Formatters/NewsFormatter';
 
 const router = useRouter();
 const EMITS = defineEmits(['opinionLoaded']);
 const OPINIONS = ref([]);
+
 
 TimesAPI.getArticles({
   fq: 'section_name:("Opinion")',
@@ -49,23 +50,7 @@ TimesAPI.getArticles({
 })
   .then((res) => {
     const DATA = res.data.response.docs.slice(0, 6);
-    OPINIONS.value = DATA.map((opinion) => {
-      const AUTHOR_NAME = NameFormatter.formatName(
-        opinion.byline.person.firstname,
-        opinion.byline.person.middlename,
-        opinion.byline.person.lastname
-      );
-
-      return {
-        imgSrc: `https://www.nytimes.com/${opinion.multimedia[40].url}`,
-        headline: opinion.headline.main,
-        abstract: opinion.abstract,
-        author: AUTHOR_NAME !== '' ? AUTHOR_NAME : 'Anonymous',
-        src: opinion.web_url,
-        date: new Date(opinion.pub_date).toLocaleDateString('en', { dateStyle: 'long' })
-      };
-    });
-
+    OPINIONS.value = DATA.map(news => NewsFormatter.format(news));
     EMITS('opinionLoaded');
   })
   .catch((err) => {

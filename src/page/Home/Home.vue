@@ -1,14 +1,14 @@
 <template>
-  <PageLoader v-if="!areAllComponentsLoaded" />
-  <Header @header-loaded="isHeaderLoaded = true" />
+  <PageLoader v-if='!areAllComponentsLoaded' />
+  <Header @header-loaded='isHeaderLoaded = true' />
 
-  <div class="px-4" v-if="isHeaderLoaded">
-    <div class="divide-y divide-dashed divide-slate-400 py-10">
-      <div class="mb-20 flex flex-col xl:flex-row">
-        <AboutHealth @health-loaded="isHealthLoaded = true" />
-        <Opinion @opinion-loaded="isOpinionLoaded = true" />
+  <div class='px-4' v-if='isHeaderLoaded'>
+    <div class='divide-y divide-dashed divide-slate-400 py-10'>
+      <div class='mb-20 flex flex-col xl:flex-row'>
+        <AboutHealth @health-loaded='isHealthLoaded = true' />
+        <Opinion @opinion-loaded='isOpinionLoaded = true' />
       </div>
-      <TheWorld @world-loaded="isWorldLoaded = true" />
+      <TheWorld @world-loaded='isWorldLoaded = true' />
     </div>
 
     <Footer />

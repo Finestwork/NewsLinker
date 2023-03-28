@@ -20,6 +20,13 @@ const router = createRouter({
       path: '/error/rate-limit-exceeded',
       name: 'RateLimitError',
       component: RateLimitError
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'PageNotFound',
+      beforeEnter(to, from, next){
+        next({name: 'Home'});
+      }
     }
   ]
 });

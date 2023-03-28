@@ -93,7 +93,6 @@ const handleRequest = (res) => {
 
         if (ctr === TOTAL_LENGTH) {
           showLoader.value = false;
-          document.body.style.overflow = null;
           EMITS('headerLoaded');
         }
       });
@@ -104,7 +103,6 @@ const handleRequest = (res) => {
   });
 };
 
-document.body.style.overflow = 'hidden';
 TimesAPI.getArticles({
   q: 'news',
   fq: 'section_name:("World")'

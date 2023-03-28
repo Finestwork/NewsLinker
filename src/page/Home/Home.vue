@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import Header from './Partials/Header.vue';
 import AboutHealth from './Partials/AboutHealth.vue';
 import Opinion from '@/page/Home/Partials/Opinion.vue';
@@ -32,4 +32,16 @@ const isWorldLoaded = ref(false);
 const areAllComponentsLoaded = computed(
   () => isHeaderLoaded.value && isHealthLoaded.value && isOpinionLoaded.value && isWorldLoaded.value
 );
+
+watch(areAllComponentsLoaded, (shouldDisplayScrollbar)=>{
+  const hideScrollbar = (value) => {
+    document.body.style.overflowY = value;
+    document.body.querySelector('main').style.overflowY = value;
+  }
+  if(shouldDisplayScrollbar){
+    hideScrollbar(null)
+  }else{
+    hideScrollbar('hidden');
+  }
+}, {immediate: true});
 </script>
